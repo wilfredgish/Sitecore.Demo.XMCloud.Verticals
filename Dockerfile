@@ -7,7 +7,7 @@ RUN npm i
 
 COPY . .
 
-RUN mkdir -p .next/cache/eslint && chmod -R 755 .next/cache
+RUN mkdir -p /app/.next/cache/eslint && chmod -R 755 /app/.next/cache
 
 EXPOSE 3000
 
