@@ -7,7 +7,7 @@ RUN npm i
 
 COPY . . 
 
-RUN chown -R nextjs:nodejs /app/.next ./.next
+RUN chown -R 755 /app/.next ./.next
 
 EXPOSE 3000
 
