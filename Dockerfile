@@ -5,9 +5,9 @@ COPY package.json package-lock.json ./
 
 RUN npm i
 
-COPY . .
+COPY . . 
 
-RUN mkdir -p /app/.next/cache/eslint && chmod -R 755 /app/.next/cache
+RUN chown -R nextjs:nodejs /app/.next ./.next
 
 EXPOSE 3000
 
