@@ -1,4 +1,4 @@
-FROM node:20-alipine AS builder
+FROM nexus.bcbst.com:8096/node:20
 
 WORKDIR /app
 
