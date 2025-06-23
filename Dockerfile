@@ -1,6 +1,6 @@
 FROM node:22-alpine
 
-WORKDIR /
+WORKDIR /app
 
 # Clean previous node_modules if any
 RUN rm -rf node_modules
