@@ -13,4 +13,4 @@ COPY . . --chown=nextjs:nodejs
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "next:start"]
