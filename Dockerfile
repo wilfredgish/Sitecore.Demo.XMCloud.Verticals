@@ -12,7 +12,13 @@ COPY package*.json ./
 
 RUN npm cache clean --force
 
+RUN npm set strict-ssl false
+
+RUN npm set proxy http://webproxy.bcbst.com:443
+
+
 RUN npm install
+
 
 # Copy the rest of your application code
 COPY . .
@@ -28,6 +34,7 @@ RUN addgroup --system --gid 1001 nodejs \
 
     # Switch to the nextjs user
 # USER nextjs
+
 
 
 RUN mkdir -p scripts/temp \    
