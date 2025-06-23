@@ -18,6 +18,8 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY . . --chown=nextjs:nodejs
 
+RUN  ls -la
+
 EXPOSE 3000
 
 CMD ["npm", "run", "start:production"]
