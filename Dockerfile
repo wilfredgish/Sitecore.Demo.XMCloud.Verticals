@@ -18,6 +18,8 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY . . 
 
+RUN chown -R nextjs:nodejs /app
+
 RUN  ls -la
 
 EXPOSE 3000
