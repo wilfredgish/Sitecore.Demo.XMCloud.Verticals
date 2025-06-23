@@ -22,7 +22,10 @@ chown -R nextjs:nodejs /app
 
 COPY . . 
 
-RUN mkdir -p /app/scripts/temp chmod -R nextjs:nodejs /app/scripts/temp
+RUN mkdir -p /app/scripts/temp  && \
+
+
+chmod -R nextjs:nodejs /app/scripts/temp
 
 
 RUN  ls -la
