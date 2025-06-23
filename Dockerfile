@@ -25,7 +25,7 @@ COPY . .
 RUN mkdir -p /app/scripts/temp  && \
 
 
-chmod -R nextjs:nodejs /app/scripts/temp
+chmod -R 755 /app/scripts/temp
 
 
 RUN  ls -la
