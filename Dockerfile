@@ -23,6 +23,11 @@ RUN mkdir -p /app/scripts/temp \
     && chown -R nextjs:nodejs /app \
     && chmod -R 755 /app/scripts/temp
 
+
+    RUN mkdir -p /app/.next/cache \
+    && chown -R nextjs:nodejs /app \
+    && chmod -R 755 /app/.next/cache
+
 # Copy the rest of your application code
 COPY . .
 
