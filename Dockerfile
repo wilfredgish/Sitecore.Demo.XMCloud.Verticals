@@ -19,14 +19,9 @@ RUN addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 --ingroup nodejs nextjs
 
 # Ensure the /app directory and its subdirectories have the correct permissions
-RUN mkdir -p /app/scripts/temp \
+RUN mkdir -p /app/scripts/temp /app/.next/cache \
     && chown -R nextjs:nodejs /app \
-    && chmod -R 755 /app/scripts/temp
-
-
-    RUN mkdir -p /app/.next/cache \
-    && chown -R nextjs:nodejs /app \
-    && chmod -R 755 /app/.next/cache
+    && chmod -R 755 /app/scripts/temp /app/.next/cache
 
 # Copy the rest of your application code
 COPY . .
