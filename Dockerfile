@@ -16,9 +16,14 @@ RUN addgroup --system --gid 1001 nodejs
 
 RUN adduser --system --uid 1001 nextjs
 
+RUN mkdir -p /app/scripts/temp && \
+
+chown -R nextjs:nodejs /app
+
 COPY . . 
 
-RUN chown -R nextjs:nodejs /app
+RUN mkdir -p /app/scripts/temp chmod -R nextjs:nodejs /app/scripts/temp
+
 
 RUN  ls -la
 
