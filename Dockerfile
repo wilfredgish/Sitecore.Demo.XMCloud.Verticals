@@ -37,7 +37,7 @@ RUN addgroup --system --gid 1001 nodejs \
     # Switch to the nextjs user
 # USER nextjs
 
-
+ENV NODE_EXTRA_CA_CERTS=bcbst.pem
 
 RUN mkdir -p scripts/temp \    
  && chown -R 1001:0 scripts/temp  \ 
