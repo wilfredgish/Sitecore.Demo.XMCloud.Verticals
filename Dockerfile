@@ -19,6 +19,8 @@ RUN npm set proxy http://webproxy.bcbst.com:443
 
 RUN npm install
 
+ENV NODE_EXTRA_CA_CERTS=bcbst.pem
+
 ENV http_proxy=http://webproxy.bcbst.com:443
 
 ENV https_proxy=https://webproxy.bcbst.com:443
@@ -37,7 +39,7 @@ RUN addgroup --system --gid 1001 nodejs \
     # Switch to the nextjs user
 # USER nextjs
 
-ENV NODE_EXTRA_CA_CERTS=bcbst.pem
+
 
 RUN mkdir -p scripts/temp \    
  && chown -R 1001:0 scripts/temp  \ 
