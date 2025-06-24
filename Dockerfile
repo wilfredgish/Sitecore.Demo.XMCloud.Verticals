@@ -19,7 +19,9 @@ RUN npm set proxy http://webproxy.bcbst.com:443
 
 RUN npm install
 
+ENV http_proxy=http://webproxy.bcbst.com:443
 
+ENV https_proxy=https://webproxy.bcbst.com:443
 # Copy the rest of your application code
 COPY . .
 
