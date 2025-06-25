@@ -19,13 +19,15 @@ RUN npm set proxy http://webproxy.bcbst.com:443
 
 RUN npm install
 
-ENV NODE_EXTRA_CA_CERTS=bcbst.pem
+
 
 ENV http_proxy=http://webproxy.bcbst.com:443
 
 ENV https_proxy=https://webproxy.bcbst.com:443
 # Copy the rest of your application code
 COPY . .
+
+ENV NODE_EXTRA_CA_CERTS=bcbstrootca.pem
 
 # Add nodejs group and nextjs user
 RUN addgroup --system --gid 1001 nodejs \
