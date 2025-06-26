@@ -29,6 +29,8 @@ COPY . .
 
 ENV NODE_EXTRA_CA_CERTS=bcbstrootca.pem
 
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+
 # Add nodejs group and nextjs user
 RUN addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 --ingroup nodejs nextjs
