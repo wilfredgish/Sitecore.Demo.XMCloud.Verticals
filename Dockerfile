@@ -14,14 +14,14 @@ RUN npm cache clean --force
 
 RUN npm set strict-ssl false
 
-RUN npm set proxy http://webproxy.bcbst.com:443
+RUN npm set proxy http://webproxy.bcbst.com:80
 
 
 RUN npm install
 
 
 
-ENV http_proxy=http://webproxy.bcbst.com:443
+ENV http_proxy=http://webproxy.bcbst.com:80
 
 ENV https_proxy=https://webproxy.bcbst.com:443
 # Copy the rest of your application code
