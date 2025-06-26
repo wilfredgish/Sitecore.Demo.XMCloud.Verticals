@@ -12,7 +12,7 @@ import { JssConfig } from 'lib/config';
  */
 export const createGraphQLClientFactory = (config: JssConfig) => {
   let clientConfig: GraphQLRequestClientFactoryConfig;
-
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Disable TLS verification for development purposes
   if (config.sitecoreEdgeContextId) {
     clientConfig = {
       endpoint: getEdgeProxyContentUrl(config.sitecoreEdgeContextId, config.sitecoreEdgeUrl),
