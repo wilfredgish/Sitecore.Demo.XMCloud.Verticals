@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-nexus.bcbst.com:8096/node:20
+FROM nexus.bcbst.com:8096/node:20
 
 # Set the working directory in the container
 WORKDIR /app
