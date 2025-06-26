@@ -27,9 +27,8 @@ ENV https_proxy=https://webproxy.bcbst.com:443
 # Copy the rest of your application code
 COPY . .
 
-ENV NODE_EXTRA_CA_CERTS=bcbstrootca.pem
+ENV NODE_EXTRA_CA_CERTS=/etc/ssl/pki/bcbstrootca.crt
 
-ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Add nodejs group and nextjs user
 RUN addgroup --system --gid 1001 nodejs \
