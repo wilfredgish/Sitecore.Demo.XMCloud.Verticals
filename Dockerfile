@@ -1,8 +1,27 @@
 # Use an official Node.js runtime as a parent image
-FROM nexus.bcbst.com:8096/node:20
+FROM nexus.bcbst.com:8096/node:20 as deps
 
 # Set the working directory in the container
 WORKDIR /app
+
+# Clean previous node_modules if any
+RUN rm -rf node_modules
+
+# Copy dependency files and install
+COPY package*.json ./
+
+# Runtime stage
+
+RUN npm cache clean --force
+
+RUN npm set strict-ssl false
+
+RUN npm set proxy http://webproxy.bcbst.com:80
+
+RUN npm install
+
+# Runtime Stage
+FROM nexus.bcbst.com:8096/node:20 as runner
 
 # Install Chromium and required system libraries
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -14,27 +33,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     chromium \
   && rm -rf /var/lib/apt/lists/*
 
-# Clean previous node_modules if any
-RUN rm -rf node_modules
-
-# Copy dependency files and install
-COPY package*.json ./
-
-RUN npm cache clean --force
-
-RUN npm set strict-ssl false
-
-RUN npm set proxy http://webproxy.bcbst.com:80
-
-
-RUN npm install
-
-
 
 ENV http_proxy=http://webproxy.bcbst.com:80
 
 ENV https_proxy=https://webproxy.bcbst.com:443
 # Copy the rest of your application code
+
+# Copy App
+
+COPY --from=deps /app/node_modules ./node_modules
+
 COPY . .
 
 ENV NODE_EXTRA_CA_CERTS=/etc/ssl/pki/bcbst_rootca.crt
