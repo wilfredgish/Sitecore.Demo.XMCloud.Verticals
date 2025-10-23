@@ -4,6 +4,16 @@ FROM nexus.bcbst.com:8096/node:20
 # Set the working directory in the container
 WORKDIR /app
 
+# Install Chromium and required system libraries
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates wget gnupg \
+    fonts-liberation \
+    libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxcomposite1 libxdamage1 \
+    libxrandr2 libgbm1 libasound2 libxss1 libx11-6 libx11-xcb1 libxshmfence1 \
+    libpangocairo-1.0-0 libgtk-3-0 \
+    chromium \
+  && rm -rf /var/lib/apt/lists/*
+
 # Clean previous node_modules if any
 RUN rm -rf node_modules
 
